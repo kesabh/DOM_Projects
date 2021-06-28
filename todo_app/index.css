@@ -1,0 +1,95 @@
+*{
+    margin : 0px ; 
+    padding : 0px ;
+    box-sizing: border-box;
+}
+body {
+	background: linear-gradient(-45deg, #d1d8e0, #a5b1c2, #778ca3, #4b6584);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container{
+    width : 500px ;
+    margin: 25px auto ;
+    display: flex;
+    justify-content: space-evenly;
+    padding : 5px ; 
+    flex-wrap: wrap;
+}
+
+.input{
+    width : 300px ; 
+    padding: 6px 15px ;
+    font-size: 18px ;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    font-family: cursive;
+    transition: all .2s ;
+}
+.input:hover , .input:focus{
+    background-color: #273c75;
+    color : white ; 
+    padding : 8px 15px ; 
+}
+.add-button{
+    border-radius: 5px;
+    border : none ; 
+    outline: none;
+    font-size: 18px;
+    font-weight: bold ;
+    padding : 8px ;
+    background-color: #44bd32;
+    color : white ; 
+    font-family: arial ;
+    cursor: pointer;
+    transition: all 0.2s ;
+}
+
+.todo-item{
+    padding : 12px 30px ; 
+    width: 65% ;
+    margin : 10px  auto ;
+    color : white ; 
+    font-family: cursive ;
+    background-color: #273c75 ;
+    border-radius: 10px ;
+    font-size: 18px ;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between ;
+    transition : all .3s ; 
+}
+.todo-item:hover{
+    background-color: #192a56;
+}
+
+.remove-button{
+    border-radius: 4px;
+    border : none ; 
+    outline: none;
+    font-size: 17px;
+    padding : 8px ;
+    background-color: #c23616;
+    color : white ; 
+    font-family: cursive  ;
+    cursor: pointer ;
+    transition : all .2s ; 
+}
+
+.add-button:hover, .remove-button:hover{
+    border : white 3px solid ; 
+}
