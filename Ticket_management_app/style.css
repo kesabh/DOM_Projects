@@ -88,6 +88,7 @@ body{
     display: flex  ;
     flex-wrap: wrap ;
     justify-content: space-evenly ;
+    transition: all 0.1s ease;
 }
 
 .modal-container{
@@ -183,10 +184,18 @@ body{
 .ticket{
     height : 250px ; 
     width: 320px ; 
-    border : black 2px solid ; 
     margin : 10px 20px ; 
     border-radius: 8px ; 
     padding : 10px ; 
+    border : lightgray 2px solid ; 
+    box-shadow: 0px 2px 5px black ;
+    transition: all 0.2s;
+}
+.ticket:hover{
+    transform: scale(1.02);
+    /* transform: translate(0px, -3px); */
+    box-shadow: 2px 4px 8px black ;
+
 }
 .ticket>*{
     margin : 4px 0px ; 

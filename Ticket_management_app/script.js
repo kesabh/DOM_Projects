@@ -6,6 +6,11 @@ let cancelTicket = document.querySelector('.cancel');
 let ticketContainer = document.querySelector('.ticket-container');
 let headFilters = document.querySelectorAll('.filter') ; 
 
+document.querySelector('body').addEventListener('keydown', function(e){
+    if( e.key == "Escape" )
+        hideModal() ;
+}) ; 
+
 
 openModal.addEventListener('click', showModal);
 closeModal.addEventListener('click', hideModal);
@@ -25,6 +30,7 @@ for (let i = 0; i < modalFilters.length; i++) {
 }
 
 function showModal() {
+    ticketContainer.style.filter = "blur(10px)" ; 
     let modal = document.querySelector('.modal-container');
     document.querySelector("#date").value = getDate();
     document.querySelector("#time").value = getTime();
@@ -32,6 +38,7 @@ function showModal() {
 }
 
 function hideModal() {
+    ticketContainer.style.filter = "blur(0px)" ; 
     let modal = document.querySelector('.modal-container');
     document.querySelector("#title").value = "";
     document.querySelector("#description").value = "";
@@ -60,7 +67,6 @@ function addTicketToMain() {
 
 function appendTicket( id, title, description, date, time, filterColor ){
     let ticket = document.createElement('div');
-    ticket.style.border = "lightgray 2px solid" ;
     ticket.style.borderTop = filterColor + "30px solid"
     ticket.classList.add("ticket");
     ticket.innerHTML = `<div class="head">
