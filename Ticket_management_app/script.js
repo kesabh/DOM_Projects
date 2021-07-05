@@ -29,6 +29,7 @@ for (let i = 0; i < modalFilters.length; i++) {
     })
 }
 
+// function to show the create-ticket modal
 function showModal() {
     ticketContainer.style.filter = "blur(10px)" ; 
     let modal = document.querySelector('.modal-container');
@@ -37,6 +38,7 @@ function showModal() {
     modal.style.display = "block";
 }
 
+// function to hide the create-ticket modal
 function hideModal() {
     ticketContainer.style.filter = "blur(0px)" ; 
     let modal = document.querySelector('.modal-container');
@@ -45,6 +47,7 @@ function hideModal() {
     modal.style.display = "none";
 }
 
+// function to handle creation of a ticket 
 function addTicketToMain() {
     let id = uID() ; 
     let title = document.querySelector("#title").value;
@@ -60,11 +63,14 @@ function addTicketToMain() {
 
     appendTicket( id, title, description, date, time, bg ) ; 
     
+    // function adding the generated ticket into DataBase
     addToDb( id, title, description, date, time, bg ) ; 
     hideModal();
     
 }
 
+
+// function to add a ticket on the webpage
 function appendTicket( id, title, description, date, time, filterColor ){
     let ticket = document.createElement('div');
     ticket.style.borderTop = filterColor + "30px solid"
@@ -88,6 +94,7 @@ function appendTicket( id, title, description, date, time, filterColor ){
 }
 
 
+// function to remove the ticket from dataBase
 function removeTicket(e) {
     let str = (e.target.previousElementSibling.textContent);
     let id = str.substring(1) ; 
@@ -98,6 +105,8 @@ function removeTicket(e) {
 }
 
 
+
+// function to display the ticket on the webpage according to the selected filter 
 function showFilteredTickets(e){
     let style = getComputedStyle(e.target) ;
     let filterColor = style.getPropertyValue('background-color') ;  
@@ -117,7 +126,7 @@ function showFilteredTickets(e){
 }
 
 
-
+// utility functions to get current date and time
 function getDate() {
 
     let time = new Date();
