@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title> Ticket Managing App </title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="all-filters">
+            <div class="filter red"></div>
+            <div class="filter blue "></div>
+            <div class="filter green "></div>
+            <div class="filter yellow "></div>
+            <div class="filter black "></div>
+        </div>
+
+        <div class="actions">
+            <div class="open">
+                <i class="fa fa-plus"></i>
+            </div>
+            <div class="close">
+                <i class="fa fa-window-close"></i>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ticket-container">
+    </div>
+
+    <div class="modal-container">
+        <div class="ticket-modal">
+            <div class="ticket-info">
+                <input type="text" placeholder="Title" id="title">
+                <textarea spellcheck="false" placeholder="Description" id="description"></textarea>
+                <input type="date" readonly id="date">
+                <input type="time" readonly id="time">
+            </div>
+            <div class="ticket-filters">
+                <div class="ticket-filter red selected-filter"></div>
+                <div class="ticket-filter blue "></div>
+                <div class="ticket-filter green "></div>
+                <div class="ticket-filter yellow "></div>
+                <div class="ticket-filter black "></div>
+            </div>
+        </div>
+
+        <div class="modal-buttons">
+            <button class="ticket-btn add">Add Ticket </button>
+            <button class="ticket-btn cancel">Cancel </button>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/short-unique-id@4.3.3/dist/short-unique-id.min.js"></script>
+    <script>
+        let uID = new ShortUniqueId();
+    </script>
+    <script src="./script.js"></script>
+    <script src="db.js"></script>
+</body>
+
+</html>

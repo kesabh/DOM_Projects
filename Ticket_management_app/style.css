@@ -1,0 +1,207 @@
+*{
+    margin : 0px ; 
+    padding : 0px ; 
+    box-sizing: border-box;
+}
+
+@keyframes modal{
+    from { top : 0% ; opacity: 0 ;  }
+    to{ top : 25%; opacity: 1 ;}
+}
+
+body{
+    background-color: #bdc3c7;
+}
+.header{
+    background-color: #34495e ;
+    display: flex;
+    height: 90px ;
+    justify-content: space-around ;
+    align-items: center ;
+    padding : 0px 20px ; 
+}
+.header .all-filters{
+    background-color: #a4b0be ;
+    height: 50px ; 
+    width: 400px ;  
+    display: flex ;
+    justify-content: space-evenly ;
+    align-items: center;
+    border-radius: 10px;
+}
+.all-filters:hover{
+    background-color: #bdc3c7;
+}
+.filter{
+    height : 25px ; 
+    width : 50px ; 
+    margin : 5px ; 
+    border-radius: 5px ;
+    cursor: pointer;
+    opacity: 0.7 ;
+    transition: all 0.2s ;
+}
+.filter:hover{
+    opacity: 1  ;
+    transform: scale(1.2);
+}
+.header .actions{
+    display: flex ;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.actions .open, .close  {    
+    margin : 4px ; 
+    border-radius: 5px ;
+    width: 70px ;
+    padding: 5px ;  
+    text-align: center;
+    background-color: #7f8fa6;
+    /* border : #d2dae2 2px solid ;  */
+    cursor: pointer ;
+
+}
+.actions i{
+    font-size : 30px ; 
+    color : white ; 
+    transition: all .1s ;
+}
+.actions i:hover{
+    font-size: 34px ; 
+}
+.red{
+    background-color: #e84118 ;
+}
+.blue{
+    background-color: #273c75  ;
+}
+.green{
+    background-color:#44bd32;
+}
+.yellow{
+    background-color: #fbc531 ;
+}
+.black{
+    background-color: black ;
+}
+.ticket-container{
+    display: flex  ;
+    flex-wrap: wrap ;
+    justify-content: space-evenly ;
+}
+
+.modal-container{
+    display: none ;
+    background-color: black;
+    border : black 3px solid ; 
+    width: 400px  ;
+    padding : 2px ; 
+    position: absolute ; 
+    top : 25% ;
+    left : calc(50vw - 250px) ; 
+    animation: modal 0.6s ;
+    text-align: center;
+    border-radius: 10px ;
+}
+.ticket-modal{
+    display: flex ;
+    justify-content: center ; 
+    border-radius: 10px ;
+    margin: 5px ;
+
+}
+.ticket-info{
+    margin : 1px ; 
+    width: 80% ;
+}
+.ticket-info > * {
+    display: block ;
+    width: 95% ; 
+    padding : 5px 10px ; 
+    font-size: 17px ; 
+    margin: 4px auto ;
+    border-radius: 5px ;
+    outline: none;
+    border : none;
+}
+.ticket-info textarea{
+    height : 170px ;  
+}
+.ticket-filters{
+    width: 20% ;
+    display: flex ;
+    flex-direction: column ;
+    justify-content: center ;
+    align-items: center ;
+    background-color: rgb(44, 39, 39);
+    border-radius: 5px ;
+    margin : 2px ;
+    padding: 4px ; 
+}
+.ticket-filter{
+    opacity: 0.7 ;
+    height : 35px ; 
+    width : 90% ; 
+    margin : 9px 0px ; 
+    border-radius: 4px ;
+    cursor: pointer;
+    transition: all 0.3s ;
+}
+.ticket-filter:hover{
+    border : 2px solid white ; 
+    transform : scale(1.1) ;
+
+}
+.selected-filter{
+    border : 3px solid white ; 
+    opacity:  1 ;
+    transform : scale(1.1) ;
+}
+.ticket-btn {
+    border-radius: 10px ;
+    padding: 6px ;
+    font-size: 18px ;
+    margin: 5px ;
+    width: 45% ;
+    display: inline-block;
+    border : none ; 
+    outline : none ; 
+    cursor: pointer;
+    background-color: rgb(43, 39, 39) ;
+    border : white 2px solid ; 
+    color : white ; 
+    transition : all .2s ; 
+}
+.ticket-btn:hover{  
+    background-color: black ;
+    padding: 7px ;
+}
+
+
+/*  ticket styling  */
+
+.ticket{
+    height : 250px ; 
+    width: 320px ; 
+    border : black 2px solid ; 
+    margin : 10px 20px ; 
+    border-radius: 8px ; 
+    padding : 10px ; 
+}
+.ticket>*{
+    margin : 4px 0px ; 
+}
+.ticket .head{
+    display: flex ;
+    justify-content: space-between;
+}
+.ticket .head .delete{
+    font-size: 29px  ;
+    color : white; 
+    transition: all 0.05s ;
+    cursor: pointer ;
+}
+.ticket .head .delete:hover{
+    font-size: 32px ;
+    text-shadow: 0px 2px 4px black ;
+}
