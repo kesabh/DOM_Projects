@@ -47,3 +47,5 @@ function removeFromDb(id) {
     })
     localStorage.setItem("allTickets", JSON.stringify(updatedTicketsList));
 }
+
+

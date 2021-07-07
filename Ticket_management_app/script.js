@@ -4,12 +4,12 @@ let modalFilters = document.querySelectorAll('.ticket-filter');
 let addTicket = document.querySelector('.add');
 let cancelTicket = document.querySelector('.cancel');
 let ticketContainer = document.querySelector('.ticket-container');
-let headFilters = document.querySelectorAll('.filter') ; 
+let headFilters = document.querySelectorAll('.filter');
 
-document.querySelector('body').addEventListener('keydown', function(e){
-    if( e.key == "Escape" )
-        hideModal() ;
-}) ; 
+document.querySelector('body').addEventListener('keydown', function (e) {
+    if (e.key == "Escape")
+        hideModal();
+});
 
 
 openModal.addEventListener('click', showModal);
@@ -17,10 +17,14 @@ closeModal.addEventListener('click', hideModal);
 cancelTicket.addEventListener('click', hideModal);
 addTicket.addEventListener('click', addTicketToMain);
 
-for(let i = 0 ; i < headFilters.length ; i++){
-    headFilters[i].addEventListener('click', showFilteredTickets) ; 
+
+for (let i = 0; i < headFilters.length; i++) {
+    headFilters[i].addEventListener('dblclick', showAllTickets);
 }
 
+for (let i = 0; i < headFilters.length; i++) {
+    headFilters[i].addEventListener('click', showFilteredTickets);
+}
 
 for (let i = 0; i < modalFilters.length; i++) {
     modalFilters[i].addEventListener('click', function (e) {
@@ -31,7 +35,7 @@ for (let i = 0; i < modalFilters.length; i++) {
 
 // function to show the create-ticket modal
 function showModal() {
-    ticketContainer.style.filter = "blur(10px)" ; 
+    ticketContainer.style.filter = "blur(10px)";
     let modal = document.querySelector('.modal-container');
     document.querySelector("#date").value = getDate();
     document.querySelector("#time").value = getTime();
@@ -40,7 +44,7 @@ function showModal() {
 
 // function to hide the create-ticket modal
 function hideModal() {
-    ticketContainer.style.filter = "blur(0px)" ; 
+    ticketContainer.style.filter = "blur(0px)";
     let modal = document.querySelector('.modal-container');
     document.querySelector("#title").value = "";
     document.querySelector("#description").value = "";
@@ -49,29 +53,29 @@ function hideModal() {
 
 // function to handle creation of a ticket 
 function addTicketToMain() {
-    let id = uID() ; 
+    let id = uID();
     let title = document.querySelector("#title").value;
     let description = document.querySelector("#description").value;
     let date = document.querySelector("#date").value;
     let time = document.querySelector("#time").value;
-    
+
     let selectedFilter = document.querySelector('.selected-filter');
     let style = getComputedStyle(selectedFilter);
     let bg = style.getPropertyValue('background-color');
 
     // console.log(bg);
 
-    appendTicket( id, title, description, date, time, bg ) ; 
-    
+    appendTicket(id, title, description, date, time, bg);
+
     // function adding the generated ticket into DataBase
-    addToDb( id, title, description, date, time, bg ) ; 
+    addToDb(id, title, description, date, time, bg);
     hideModal();
-    
+
 }
 
 
 // function to add a ticket on the webpage
-function appendTicket( id, title, description, date, time, filterColor ){
+function appendTicket(id, title, description, date, time, filterColor) {
     let ticket = document.createElement('div');
     ticket.style.borderTop = filterColor + "30px solid"
     ticket.classList.add("ticket");
@@ -83,7 +87,7 @@ function appendTicket( id, title, description, date, time, filterColor ){
                         <h3>Description  :  </h3>
                         <p>
                             ` + description +
-                        `</p>
+        `</p>
                         <h4> Date -  ` + date + ` </h4>
                         <h4> Time  -  ` + time + `</h4>`;
     ticketContainer.append(ticket);
@@ -97,31 +101,39 @@ function appendTicket( id, title, description, date, time, filterColor ){
 // function to remove the ticket from dataBase
 function removeTicket(e) {
     let str = (e.target.previousElementSibling.textContent);
-    let id = str.substring(1) ; 
+    let id = str.substring(1);
     // console.log(id) ; 
-    removeFromDb(id) ;  
-    e.target.parentElement.parentElement.remove() ;
+    removeFromDb(id);
+    e.target.parentElement.parentElement.remove();
     // console.log(allTickets) ;
 }
 
 
 
 // function to display the ticket on the webpage according to the selected filter 
-function showFilteredTickets(e){
-    let style = getComputedStyle(e.target) ;
-    let filterColor = style.getPropertyValue('background-color') ;  
-    console.log(filterColor) ; 
+function showFilteredTickets(e) {
+    let style = getComputedStyle(e.target);
+    let filterColor = style.getPropertyValue('background-color');
+    console.log(filterColor);
 
-    let allTicketsOnPage  = ticketContainer.querySelectorAll('.ticket') ; 
+    let allTicketsOnPage = ticketContainer.querySelectorAll('.ticket');
 
-    for(let i = 0 ; i < allTicketsOnPage.length ; i++){
-        let thisTicketColor = getComputedStyle(allTicketsOnPage[i]).getPropertyValue('border-top-color') ; 
+    for (let i = 0; i < allTicketsOnPage.length; i++) {
+        let thisTicketColor = getComputedStyle(allTicketsOnPage[i]).getPropertyValue('border-top-color');
 
-        if( thisTicketColor != filterColor )
-            allTicketsOnPage[i].style.display = "none" ; 
-        else    
-            allTicketsOnPage[i].style.display = "block" ; 
+        if (thisTicketColor != filterColor)
+            allTicketsOnPage[i].style.display = "none";
+        else
+            allTicketsOnPage[i].style.display = "block";
 
+    }
+}
+
+// to show all the tickets if double clicked on any filter 
+function showAllTickets() {
+    let allTickets = ticketContainer.querySelectorAll('.ticket');
+    for (let i = 0; i < allTickets.length; i++) {
+        allTickets[i].style.display = "block";
     }
 }
 
