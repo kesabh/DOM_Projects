@@ -14,19 +14,39 @@ let cell = document.querySelectorAll('.cell');
 for (let i = 0; i < cell.length; i++) {
 
     cell[i].addEventListener('focus', function (e) {
-        let rowid = Number(e.target.getAttribute('rowid'));
-        let colid = Number(e.target.getAttribute('colid'));
-
+        lastSelectedCell = e.target;
+        let {rowid, colid} = getRowidColidFromElement(e.target) ; 
+        let cellObject = db[rowid][colid] ; 
         // let address = String.fromCharCode(65+colid) + (rowid + 1) + "" ; 
-        let address = db[rowid][colid].address;
-        let formula = db[rowid][colid].formula;
+        let address = cellObject.address;
+        let formula = cellObject.formula;
         addressBar.value = address;
         formulaInput.value = formula;
         // console.log(db[rowid][colid]) ; 
+
+        // bold
+        if( cellObject.styling.bold ){
+            document.querySelector('.bold').classList.add("active-menu-icon")
+        }else{
+            document.querySelector('.bold').classList.remove("active-menu-icon")
+        }
+
+        //italic
+        if( cellObject.styling.italic ){
+            document.querySelector('.italic').classList.add("active-menu-icon")
+        }else{
+            document.querySelector('.italic').classList.remove("active-menu-icon")
+        }
+
+        //underline
+        if( cellObject.styling.underline ){
+            document.querySelector('.underline').classList.add("active-menu-icon")
+        }else{
+            document.querySelector('.underline').classList.remove("active-menu-icon")
+        }
     });
 
     cell[i].addEventListener('focusout', function (e) {
-        lastSelectedCell = e.target;
         let rowid = Number(e.target.getAttribute('rowid'));
         let colid = Number(e.target.getAttribute('colid'));
         let content = e.target.textContent;

@@ -26,6 +26,14 @@ function evaluateFormula(formula, selfCellObject ){
     return result ; 
 }
 
+
+function getRowidColidFromElement(element){
+    let rowid = Number(element.getAttribute('rowid'));
+    let colid = Number(element.getAttribute('colid'));
+
+    return {rowid, colid} ; 
+}
+
 function getRowidColidFromAddress(address){
     // address  = "A1"  
 

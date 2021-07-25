@@ -16,7 +16,7 @@ function createCells() {
     for (let i = 0; i < 100; i++) {
         allCells += '<div class="row">'
         for (let j = 0; j < 26; j++) {
-            allCells += '<div class="cell" contenteditable="true" rowid='+i+'  colid=' + j + '></div>'
+            allCells += '<div class="cell" contenteditable="true" rowid='+i+'  colid=' + j + ' spellcheck="false"></div>'
         }
         allCells += '</div>'
     }
@@ -40,7 +40,8 @@ function createDB(){
                 formula : "" ,
                 children : [ ] , 
                 parents : [] , 
-                visited : false 
+                visited : false ,
+                styling :  { bold : false, italic : false, underline : false }
             } ; 
 
             row.push(cellObject) ; 
