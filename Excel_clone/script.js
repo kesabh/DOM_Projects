@@ -46,6 +46,15 @@ for (let i = 0; i < cell.length; i++) {
         }
         // console.log( db ) ; 
         // console.log(a)
+
+        if( cellObject.visited ){
+            return ; 
+        }
+
+        cellObject.visited = true ;
+        visitedCells.push( {rowId : rowid , colId : colid } ) ; 
+
+        console.log(sheetsDB) ; 
     })
 
 }
@@ -77,6 +86,13 @@ formulaInput.addEventListener('focusout', function (e) {
 
         // update all children 
         updateValueOfChildren( cellObject.children ) ; 
+
+        if( cellObject.visited ){
+            return ; 
+        }
+        cellObject.visited = true ; 
+        visitedCells.push( {rowId : rowid , colId : colid}  ) ; 
+
 
         console.log(db) ; 
     }

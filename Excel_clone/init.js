@@ -16,7 +16,7 @@ function createCells() {
     for (let i = 0; i < 100; i++) {
         allCells += '<div class="row">'
         for (let j = 0; j < 26; j++) {
-            allCells += '<div class="cell" contenteditable="true" rowid='+i+'  colid=' + j + '> </div>'
+            allCells += '<div class="cell" contenteditable="true" rowid='+i+'  colid=' + j + '></div>'
         }
         allCells += '</div>'
     }
@@ -24,8 +24,12 @@ function createCells() {
 }
 createCells() ; 
 
-let db = []  ; 
+let sheetsDB = [] ;                  // [ {db , visitedcells} , {} , {}     ]
+
+let db  ;  // it is gonna be active db 
+let visitedCells ;      // will contain location of cells having some content
 function createDB(){
+    let newDB = [] ; 
     for(let i = 0 ; i < 100; i++){
         let row = [ ] ; 
         for(let j = 0 ; j < 26 ; j++){
@@ -35,13 +39,17 @@ function createDB(){
                 value : "", 
                 formula : "" ,
                 children : [ ] , 
-                parents : [] 
+                parents : [] , 
+                visited : false 
             } ; 
 
             row.push(cellObject) ; 
         }
 
-        db.push(row); 
+        newDB.push(row); 
     }
+    db = newDB ;                // active db 
+    visitedCells = [ ] ; 
+    sheetsDB.push({db : db , visitedCells : visitedCells }) ;      // adding in all sheets database
 }
 createDB() ; 
