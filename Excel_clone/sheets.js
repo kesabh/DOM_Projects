@@ -53,7 +53,19 @@ function setUI(){
         // let rowid = visitedCells[i].rowId ; 
         // let colid = visitedCells[i].colId ; 
         let {rowId, colId} = visitedCells[i] ; 
-        document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`).textContent = db[rowId][colId].value ; 
+        let cellObject = db[rowId][colId] ; 
+        let cell = document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`) ; 
+        cell.textContent = cellObject.value ; 
+
+        // set the styling to the cell 
+        if( cellObject.styling.bold ) cell.style.fontWeight = "bold" ; 
+        if( cellObject.styling.italic ) cell.style.fontStyle = "italic" ; 
+        if( cellObject.styling.underline ) cell.style.textDecoration = "underline" ;
+        cell.style.textAlign = cellObject.styling.align ;  
+        cell.style.color = cellObject.styling.color ; 
+        cell.style.backgroundColor = cellObject.styling.backgroundColor ; 
+        cell.style.fontFamily = cellObject.styling.fontFamily ; 
+        cell.style.fontSize = cellObject.styling.fontSize ; 
     }
 }
 
@@ -62,6 +74,8 @@ function createNewUI(){
         // let rowid = visitedCells[i].rowId ; 
         // let colid = visitedCells[i].colId ; 
         let {rowId, colId} = visitedCells[i] ; 
-        document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`).innerHTML = "" ; 
+        let cell = document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`) ; 
+        cell.innerHTML = "" ; 
+        cell.style = "" ; 
     }
 }

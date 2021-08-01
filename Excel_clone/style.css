@@ -2,6 +2,7 @@
     box-sizing: border-box  ;
     margin : 0px ;
     padding : 0px ;
+    font-family : 'Times New Roman' ; 
 }
 
 .title-bar {
@@ -88,10 +89,34 @@
 }
 
 .formula-bar {
+    /* padding : 5px ;  */
     height : 30px ;
     border: 1px solid black ;
+    display: flex;
+    align-items: center ;
+    border : 1px solid lightgray ; 
 }
-
+#address, #formula{
+    outline : none ; 
+    border : none ; 
+    font-size : 17px ; 
+    padding : 0px 10px ; 
+}
+#address{
+    width : 80px ; 
+    text-align : center ; 
+    font-weight : bold ; 
+}
+.fx{
+    font-family: 'Cedarville Cursive', cursive;
+    width : 50px ;
+    text-align : center ; 
+    border-left : 0.5px lightgray solid ;  
+    border-right : 0.5px lightgray solid ;  
+}
+#formula{
+    width : calc( 100vw - 140px ) ; 
+}
 .sheet-bar {
     height : 30px ;
     /* border: 1px solid black ; */
@@ -173,7 +198,6 @@
     height : calc( 100vh  - 152px ) ; 
 }
 .all-cells {
-    background: rgb(236, 230, 230);
     position:absolute ; 
     left : 30px ; 
     top:25px;
@@ -182,9 +206,12 @@
     display : flex ;
 }
 .cell{
-    border : 1px solid black ; 
+    border-bottom : 1px solid lightgray ; 
+    border-right : 1px solid lightgray ; 
     width : 100px ; 
     min-height : 25px ; 
+    cursor :cell ; 
+    outline : none ; 
 }
 .select-all{
     position : absolute ; 
@@ -193,7 +220,10 @@
     z-index: 5 ;
     width : 30px ; 
     height : 25px ;
-    background: black; 
+    background: rgb(239, 239, 239); 
+    border-right : 5px lightgray solid ; 
+    border-bottom :5px lightgray solid ; 
+
 }
 .col-name-container{
     position: absolute ; 
@@ -206,7 +236,8 @@
 .col-name-cell{
     min-width : 100px ; 
     min-height : 25px ; 
-    border : 1px solid lightgray ; 
+    border-bottom : 1px solid lightgray ; 
+    border-right : 1px solid lightgray ; 
     display : flex ; 
     justify-content: center;
     align-items: center;
@@ -216,7 +247,7 @@
     left : 0px ; 
     top : 25px ; 
     z-index: 2 ;
-    background-color: #fff;
+    /* background-color: rgb(156, 148, 148); */
 }
 .row-name-cell{
     display : flex ; 
@@ -224,9 +255,19 @@
     align-items: center ;
     width: 30px ; 
     height : 25px ; 
-    border : 1px solid lightgray ; 
+    border-bottom : 1px solid lightgray ; 
+    border-right : 1px solid lightgray ; 
 }
 
 .active-menu-icon{
     background: rgb(190, 190, 190) ;    
+}
+
+.focussed-cell{
+    border : 2px #27ae60 solid ; 
+    box-shadow : 0px 2px 2px gray ; 
+}
+
+.highlight-colrow{
+    background-color : rgb(240, 240, 240) ;
 }

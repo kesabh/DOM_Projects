@@ -2,6 +2,20 @@ let lastSelectedCell;
 let addressBar = document.querySelector('#address');
 let formulaInput = document.querySelector('#formula');
 
+let bold = document.querySelector('.bold') ; 
+let italic = document.querySelector('.italic') ; 
+let underline = document.querySelector('.underline') ; 
+
+let alignLeft = document.querySelector('.align-left') ; 
+let alignRight = document.querySelector('.align-right') ; 
+let alignCenter = document.querySelector('.align-center') ; 
+
+let textColor = document.querySelector('.text-color') ; 
+let textFill = document.querySelector('.text-fill') ; 
+
+let fontSizeSelector = document.querySelector('.font-size-selector') ; 
+let fontFamilySelector = document.querySelector('.font-family-selector') ; 
+
 cellContainerDiv.addEventListener('scroll', function (e) {
     colNameContainerDiv.style.top = e.target.scrollTop + "px";
     selectAllDiv.style.top = e.target.scrollTop + "px";
@@ -26,24 +40,61 @@ for (let i = 0; i < cell.length; i++) {
 
         // bold
         if( cellObject.styling.bold ){
-            document.querySelector('.bold').classList.add("active-menu-icon")
+            document.querySelector('.bold').classList.add("active-menu-icon") ; 
+            lastSelectedCell.style.fontWeight = "bold" ; 
         }else{
-            document.querySelector('.bold').classList.remove("active-menu-icon")
+            document.querySelector('.bold').classList.remove("active-menu-icon") ; 
+            lastSelectedCell.style.fontWeight = "" ; 
         }
 
         //italic
         if( cellObject.styling.italic ){
             document.querySelector('.italic').classList.add("active-menu-icon")
+            lastSelectedCell.style.fontStyle = "italic" ; 
         }else{
             document.querySelector('.italic').classList.remove("active-menu-icon")
+            lastSelectedCell.style.fontStyle = "" ; 
         }
 
         //underline
         if( cellObject.styling.underline ){
-            document.querySelector('.underline').classList.add("active-menu-icon")
+            document.querySelector('.underline').classList.add("active-menu-icon") ; 
+            lastSelectedCell.style.textDecoration = "underline" ; 
         }else{
             document.querySelector('.underline').classList.remove("active-menu-icon")
+            lastSelectedCell.style.textDecoration = "" ; 
         }
+
+        alignLeft.classList.remove("active-menu-icon");
+        alignRight.classList.remove("active-menu-icon");
+        alignCenter.classList.remove("active-menu-icon");
+        
+        if( cellObject.styling.align == "left"){
+            alignLeft.classList.add("active-menu-icon") ;
+            lastSelectedCell.style.textAlign = "left" ;  
+        }else if(cellObject.styling.align == "right") {
+            alignRight.classList.add("active-menu-icon") ; 
+            lastSelectedCell.style.textAlign = "right" ; 
+        }else if( cellObject.styling.align == "center" ){
+            alignCenter.classList.add("active-menu-icon") ; 
+            lastSelectedCell.style.textAlign = "center" ; 
+        }
+
+        fontSizeSelector.querySelector(`option[value="${cellObject.styling.fontSize}"`).selected = "selected" ; 
+        fontFamilySelector.querySelector(`option[value="${cellObject.styling.fontFamily}"`).selected = "selected" ; 
+
+        if(document.querySelector('.focussed-cell'))
+            document.querySelector('.focussed-cell').classList.remove("focussed-cell") ; 
+        lastSelectedCell.classList.add("focussed-cell") ; 
+
+        if(document.querySelector('.row-name-cell.highlight-colrow'))
+            document.querySelector('.row-name-cell.highlight-colrow').classList.remove("highlight-colrow")
+        if(document.querySelector('.col-name-cell.highlight-colrow'))
+            document.querySelector('.col-name-cell.highlight-colrow').classList.remove("highlight-colrow")
+
+        document.querySelectorAll('.col-name-cell')[colid].classList.add("highlight-colrow") ; 
+        document.querySelectorAll('.row-name-cell')[rowid].classList.add("highlight-colrow") ; 
+
     });
 
     cell[i].addEventListener('focusout', function (e) {

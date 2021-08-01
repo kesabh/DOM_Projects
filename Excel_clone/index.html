@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
     <title>Excel clone </title>
 </head>
 <body>
@@ -28,15 +31,20 @@
         <div class="material-icons menu-icon">content_copy</div>
         <div class="material-icons menu-icon">content_paste</div>
         <select name="" id="" class="font-family-selector selector" >
-            <option value="">Times New Roman</option>
-            <option value="">Arial</option>
-            <option value="">Cursive</option>
+            <option value="Times New Roman" selected>Times New Roman</option>
+            <option value="Arial">Arial</option>
+            <option value="Cursive">Cursive</option>
+            <option value="Algerian">Algerian</option>
+            <option value="Castellar">Castellar</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Monospace">Monospace</option>
+            <option value="Fantasy">Fantasy</option>
         </select>
          <select name="" id="" class="font-size-selector selector" >
             <option value="12px">12px</option>
             <option value="13px">13px</option>
             <option value="14px">14px</option>
-            <option value="16px">16px</option>
+            <option value="16px" selected>16px</option>
             <option value="18px">18px</option>
             <option value="20px">20px</option>
             <option value="22px">22px</option>
@@ -48,15 +56,16 @@
         <div class="material-icons menu-icon bold">format_bold</div>
         <div class="material-icons menu-icon italic">format_italic</div>
         <div class="material-icons menu-icon underline">format_underline</div>
-        <div class="material-icons menu-icon">format_align_left</div>
-        <div class="material-icons menu-icon">format_align_center</div>
-        <div class="material-icons menu-icon">format_align_right</div>
-        <div class="material-icons menu-icon">format_color_text</div>
-        <div class="material-icons menu-icon">format_color_fill</div>
+        <div class="material-icons menu-icon align-left">format_align_left</div>
+        <div class="material-icons menu-icon align-center">format_align_center</div>
+        <div class="material-icons menu-icon align-right">format_align_right</div>
+        <div class="material-icons menu-icon text-color" >format_color_text <input type="color" style="visibility : hidden ; width : 0px ; " ></div>
+        <div class="material-icons menu-icon text-fill">format_color_fill <input type="color" style="visibility : hidden ; width : 0px ;  "> </div>
     </div>
     
     <div class="formula-bar">
         <input type="text"  id="address"    readonly >
+        <div    class="fx">FX</div>
         <input type="text"  id="formula">
     </div>
     
@@ -79,9 +88,9 @@
     </div>
 
 </body>
-<script src="./util.js"></script>
-<script src="./init.js"></script>
-<script src="./script.js"></script>
-<script src="./sheets.js"></script>
-<script src="./menu.js"></script>
+    <script src="./util.js"></script>
+    <script src="./init.js"></script>
+    <script src="./script.js"></script>
+    <script src="./sheets.js"></script>
+    <script src="./menu.js"></script>
 </html>
