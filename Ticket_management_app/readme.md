@@ -8,3 +8,11 @@
 - HTML
 - CSS
 - JavaScript
+
+## Check live demo at 
+- https://kesabh.github.io/DOM_Projects/Ticket_management_app/
+
+# How to use 
+- Click on the '+' and 'x' icon to open a modal to add the ticket and to close the modal respectively.
+- Select the priority ( by selecting the color ) of the ticket to be generated.
+- Click on the filter bar ( in the header ) to filter the tickets based on their priority.
